@@ -1,1 +1,288 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Героизм надо помнить | Московский Политех</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #f5f3ef; font-family: 'Inter', sans-serif; color: #2c2b28; line-height: 1.5; scroll-behavior: smooth; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(140, 70, 50, 0.08) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: -2; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 2rem; }
+        .main-header { text-align: center; margin-bottom: 2rem; border-bottom: 2px solid rgba(160, 80, 60, 0.35); padding-bottom: 1rem; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 8vw, 4.2rem); font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; background: linear-gradient(135deg, #8b3c2c 0%, #c96f4a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1.2rem; }
+        .nav-menu { margin-top: 1rem; }
+        .nav-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 2rem; list-style: none; }
+        .nav-link { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5e4b3a; text-decoration: none; padding: 0.5rem 0; transition: all 0.25s ease; border-bottom: 2px solid transparent; display: inline-block; }
+        .nav-link:hover, .nav-link.active { color: #bc5a38; border-bottom-color: #bc5a38; }
+        .divider { width: 80px; height: 3px; background: #bc6f4b; margin: 1rem auto 2rem auto; border-radius: 3px; }
+        .page-content { background: rgba(255, 252, 245, 0.92); backdrop-filter: blur(2px); border-radius: 32px; padding: 2rem; margin: 2rem 0; box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.12); border: 1px solid rgba(200, 140, 100, 0.3); }
+        .project-description { font-size: 1.2rem; line-height: 1.6; text-align: center; max-width: 900px; margin: 1.5rem auto; color: #3b2e26; font-weight: 500; border-left: 3px solid #c97a54; border-right: 3px solid #c97a54; padding: 0.8rem 1.5rem; background: #fffaf3; border-radius: 24px; }
+        .we-block { background: #fff7ef; border-radius: 28px; padding: 2rem; margin: 2rem 0; text-align: center; border: 1px solid #eddccf; }
+        .we-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 800; color: #b85c38; margin-bottom: 1rem; }
+        .we-text { font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: #4a3a2e; }
+        .page-card { display: none; animation: fadeUp 0.35s ease-out; }
+        .page-card.active-page { display: block; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1.2rem; border-left: 5px solid #bc6b45; padding-left: 1.2rem; color: #3f2c1f; }
+        h3 { font-size: 1.4rem; margin: 1.5rem 0 0.8rem; color: #a45332; font-weight: 700; }
+        .museum-list, .resource-list, .participants-list { list-style: none; margin: 1.5rem 0; }
+        .museum-list li, .resource-list li, .participants-list li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; }
+        .museum-list li::before { content: "★"; color: #bc6f4b; position: absolute; left: 0; }
+        .resource-list li::before, .participants-list li::before { content: "✦"; color: #bc6f4b; position: absolute; left: 0; }
+        a { color: #bc5a38; text-decoration: none; font-weight: 500; }
+        a:hover { color: #8b3c24; text-decoration: underline; }
+        .placeholder-note { background: #fef3ea; border-radius: 20px; padding: 1.5rem; text-align: center; margin: 1rem 0; font-style: italic; color: #6a4c38; border: 1px solid #ebd4c4; }
+        .project-card-light { background: #fffaf4; border-radius: 24px; padding: 1.6rem; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #eedbcb; }
+        .project-flex { display: flex; flex-wrap: wrap; gap: 1.8rem; align-items: flex-start; }
+        .project-content { flex: 2; min-width: 220px; }
+        .project-photo { flex: 1; min-width: 180px; background: #f3ede5; border-radius: 20px; padding: 0.8rem; border: 1px solid #c9aa8b; text-align: center; }
+        .actual-image { width: 100%; border-radius: 16px; display: block; object-fit: cover; max-height: 220px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .image-caption { font-size: 0.7rem; margin-top: 8px; color: #a07a5c; text-align: center; }
+        .project-title { font-size: 1.5rem; font-weight: 800; color: #a84f2c; margin-bottom: 0.75rem; font-family: 'Playfair Display', serif; }
+        .project-desc { font-size: 1rem; margin: 0.5rem 0; font-weight: 500; color: #4a3729; }
+        .italic-note { font-style: italic; color: #b26947; margin-top: 0.3rem; }
+        .year-list-note { font-family: monospace; font-size: 0.75rem; background: #f7ede2; padding: 0.3rem 0.6rem; border-radius: 30px; display: inline-block; margin-top: 8px; color: #74583e; }
+        @media (max-width: 750px) { .project-flex { flex-direction: column; } .container { padding: 1rem; } .nav-list { gap: 0.8rem 1.2rem; } .nav-link { font-size: 0.8rem; } h2 { font-size: 1.6rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header class="main-header">
+        <div class="hero-title">ГЕРОИЗМ НАДО ПОМНИТЬ</div>
+        <nav class="nav-menu">
+            <ul class="nav-list">
+                <li><a href="#home" class="nav-link" data-page="home">ГЛАВНАЯ</a></li>
+                <li><a href="#about" class="nav-link" data-page="about">О ПРОЕКТЕ</a></li>
+                <li><a href="#journal" class="nav-link" data-page="journal">ЖУРНАЛ</a></li>
+                <li><a href="#resources" class="nav-link" data-page="resources">РЕСУРСЫ</a></li>
+                <li><a href="#participants" class="nav-link" data-page="participants">УЧАСТНИКИ</a></li>
+            </ul>
+        </nav>
+        <div class="divider"></div>
+    </header>
 
+    <div class="page-content">
+        <div id="home" class="page-card active-page">
+            <div class="project-description"><strong>ГЕРОИЗМ НАДО ПОМНИТЬ</strong> — ПРОЕКТ СТУДЕНТОВ МОСКОВСКОГО ПОЛИТЕХА В СОТРУДНИЧЕСТВЕ С МУЗЕЯМИ ВОИНСКОЙ СЛАВЫ В МОСКВЕ И ЗА ЕЁ ПРЕДЕЛАМИ.</div>
+            <div class="we-block"><div class="we-title">МЫ</div><div class="we-text">ЗАНИМАЕМСЯ ИЗУЧЕНИЕМ ИСТОРИЙ О ВЕЛИКИХ ПОДВИГАХ НАШИХ ПРЕДКОВ, БЕРЕЖНО СОБРАНЯЯ ПАМЯТЬ О ТОМ, ЧТО ГЕРОИЗМ – НЕ ПУСТОЕ СЛОВО, И О НЁМ НЕЛЬЗЯ ЗАБЫВАТЬ.</div></div>
+        </div>
+
+        <div id="about" class="page-card">
+            <h2>О ПРОЕКТЕ</h2>
+            <div class="project-description" style="border:none; background:transparent; text-align:left; padding-left:0;"><strong>ГЕРОИЗМ НАДО ПОМНИТЬ</strong> — ПРОЕКТ СТУДЕНТОВ МОСКОВСКОГО ПОЛИТЕКА В СОТРУДНИЧЕСТВЕ С МУЗЕЯМИ ВОИНСКОЙ СЛАВЫ В МОСКВЕ И ЗА ЕЁ ПРЕДЕЛАМИ.</div>
+            <h3>НА ДАННЫЙ МОМЕНТ МЫ НА ПОСТОЯННОЙ ОСНОВЕ РАБОТАЕМ СО СЛЕДУЮЩИМИ МУЗЕЯМИ:</h3>
+            <ul class="museum-list"><li><strong>МУЗЕЙ 2-Й ДНО ШКОЛЫ №1362 ИЗМАЙЛОВСКОГО РАЙОНА Г. МОСКВЫ</strong></li><li><strong>МУЗЕЙ ИНСТРУМЕНТАЛЬНОГО ЗАВОДА Г. МОСКВЫ</strong></li><li><strong>ИНФОРМАЦИОННЫЙ ЦЕНТР «СОКОЛИНАЯ ГОРА»</strong></li><li><strong>И ЭПИЗОДИЧЕСКОЕ СОТРУДНИЧЕСТВО СО МНОГИМИ ДРУГИМИ МУЗЕЯМИ</strong></li></ul>
+            <div class="placeholder-note">📌 Наша работа с музеями включает совместные исследования, организацию выставок и уроков мужества.</div>
+        </div>
+
+        <div id="journal" class="page-card">
+            <h2>НАШИ ПРОЕКТЫ</h2>
+            
+            <!-- ⚠️ ЗАМЕНИТЕ ВАШ_НИК и НАЗВАНИЕ_РЕПО на свои данные GitHub -->
+            
+            <div class="project-card-light">
+                <div class="project-flex">
+                    <div class="project-content">
+                        <div class="project-title">📌 СТЕНДЫ В МУЗЕЕ 2-Й ДНО ШКОЛЫ №1362</div>
+                        <div class="project-desc">Создание информационных стендов, посвящённых боевому пути воинов-измайловцев.</div>
+                        <div class="year-list-note">★ Экспонаты и архивные данные 1941–1945 гг.</div>
+                    </div>
+                    <div class="project-photo">
+                        <img class="actual-image" src="https://private-user-images.githubusercontent.com/283413817/590138560-6aea71bc-2566-4576-9d41-f55935d7d61f.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg0NDQ1MDEsIm5iZiI6MTc3ODQ0NDIwMSwicGF0aCI6Ii8yODM0MTM4MTcvNTkwMTM4NTYwLTZhZWE3MWJjLTI1NjYtNDU3Ni05ZDQxLWY1NTkzNWQ3ZDYxZi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTEwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMFQyMDE2NDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01YmNjOTYwZjZhYTIxMDU2YmZiNWE0MDAxNDIxYjYxODI1N2I3MWE3MWRjMmUwZjAyZmVkZjE5NjRmZTIxZDU5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.202YdTFBlQwkcbJqSpDNBgcq-uU8RpY0shIf2REAKgQ" onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'background:#e7dbcf;border-radius:16px;padding:1rem;color:#a55a3a;\'>⚠️ Фото не найдено<br>Проверьте путь и название файла</div>'">
+                        <div class="image-caption">Экспозиция, посвящённая основательнице музея Евтеевой З.С и поисковику Бурулину А.В. в музее школы №1362</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card-light">
+                <div class="project-flex">
+                    <div class="project-content">
+                        <div class="project-title">🏛️ РАБОТА С СОВЕТОМ ВЕТЕРАНОВ «СОКОЛИНАЯ ГОРА»</div>
+                        <div class="project-desc">Оформление музейного центра, систематизация архивов, создание новых выставочных зон.</div>
+                        <div class="italic-note">— Участники проекта и ветераны</div>
+                    </div>
+                    <div class="project-photo">
+                        <img class="actual-image" src="https://private-user-images.githubusercontent.com/283413817/590138601-ac7b686d-eb9a-4a41-8711-ab19ae35f193.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg0NDQ1MDEsIm5iZiI6MTc3ODQ0NDIwMSwicGF0aCI6Ii8yODM0MTM4MTcvNTkwMTM4NjAxLWFjN2I2ODZkLWViOWEtNGE0MS04NzExLWFiMTlhZTM1ZjE5My5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTEwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMFQyMDE2NDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mMjExNGE4YmMwZTgxOTE3ZDBiZjliNmY0NmQ4ZTExNzcyMTZkMDA3YTM5MWQ0YzU3ZjQyYTFhZmI4Yjg3NDA3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.QwuCUIt3pHq_1wstwoKdA487RBliw_dZTjEWtO3Gc0c" alt="Музейный центр Соколиная Гора" onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'background:#e7dbcf;border-radius:16px;padding:1rem;color:#a55a3a;\'>⚠️ Фото не найдено</div>'">
+                        <div class="image-caption">Музейный центр «Соколиная гора»</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card-light">
+                <div class="project-flex">
+                    <div class="project-content">
+                        <div class="project-title">🏭 МУЗЕЙ ИНСТРУМЕНТАЛЬНОГО ЗАВОДА (МИЗ)</div>
+                        <div class="project-desc">Оцифровка воспоминаний, реставрация экспонатов, лекции для молодёжи.</div>
+                        <div class="italic-note">Музей Воинской Славы в ОАО «МИЗ»</div>
+                    </div>
+                    <div class="project-photo">
+                        <img class="actual-image" src="https://private-user-images.githubusercontent.com/283413817/590138570-0a036ef4-b32f-4956-919d-111b42224e67.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg0NDQ1MDEsIm5iZiI6MTc3ODQ0NDIwMSwicGF0aCI6Ii8yODM0MTM4MTcvNTkwMTM4NTcwLTBhMDM2ZWY0LWIzMmYtNDk1Ni05MTlkLTExMWI0MjIyNGU2Ny5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTEwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMFQyMDE2NDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jYmI5ZTQ5MDFhOGI0YjZiOWRiY2QyMmIwZWMwZTMwOGJhMzBjOWIxZjM1YTY1NmIxMzVmZDU3MjIzNmYxMTQ5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.L2rKKZxn44oGEII40UHPCWkeFcZH9cbQ3KHxz4bWDFw" alt="Музей МИЗ" onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'background:#e7dbcf;border-radius:16px;padding:1rem;color:#a55a3a;\'>⚠️ Фото не найдено</div>'">
+                        <div class="image-caption">Экспозиция музея ОАО «МИЗ»</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="placeholder-note">📖 В рамках журнала «Героизм надо помнить» мы регулярно публикуем отчёты о реализации данных проектов, фоторепортажи и интервью с участниками.</div>
+        </div>
+
+        <!-- РЕСУРСЫ -->
+        <div id="resources" class="page-card">
+            <h2>Ресурсы и архивы</h2>
+            
+            <div class="project-description" style="border-left:none; border-right:none; margin:0.5rem auto 1rem auto; text-align:left; padding-left:0; background:transparent;">
+                <strong style="display:block; font-size:1.2rem; margin-bottom:1rem;">ЕСЛИ ВЫ ХОТИТЕ ПОМОЧЬ НАМ В РАЗВИТИИ НАШЕГО ДЕЛА ИЛИ ПОПРОСИТЬ ПОМОЩИ ДЛЯ СВОЕГО МУЗЕЯ, ВЫ МОЖЕТЕ СВЯЗАТЬСЯ С НАМИ:</strong>
+            </div>
+            
+            <ul class="resource-list" style="list-style:none; margin:1.5rem 0;">
+                <li style="margin-bottom:1rem; padding-left:1.5rem; position:relative;">
+                    <strong>📧 ПО ЭЛЕКТРОННОЙ ПОЧТЕ:</strong> 
+                    <a href="mailto:LENAKRUTINA@MAIL.RU" style="color:#bc5a38; text-decoration:none;">LENAKRUTINA@MAIL.RU</a>
+                </li>
+                <li style="margin-bottom:1rem; padding-left:1.5rem; position:relative;">
+                    <strong>💬 В ТГ:</strong> 
+                    <a href="https://t.me/KRUTINAELENA" target="_blank" style="color:#bc5a38; text-decoration:none;">@KRUTINAELENA</a>
+                </li>
+                <li style="margin-bottom:1rem; padding-left:1.5rem; position:relative;">
+                    <strong>🌐 НА САЙТЕ МОСКОВСКОГО ПОЛИТЕХА:</strong> 
+                    <a href="https://mospolytech.ru" target="_blank" style="color:#bc5a38; text-decoration:none;">https://mospolytech.ru</a>
+                </li>
+            </ul>
+            
+            <div class="placeholder-note" style="margin-top:1rem; background:#fef2e9;">
+                📌 Мы всегда открыты к сотрудничеству с музеями, архивами и волонтёрами. Сохраним память о героизме вместе!
+            </div>
+        </div>
+                <!-- УЧАСТНИКИ -->
+        <div id="participants" class="page-card">
+            <h2>Участники проекта</h2>
+            <p style="margin-bottom: 1.5rem;">Над проектом «Героизм надо помнить» работают студенты, волонтёры и представители музеев. Каждый вносит свой вклад в сохранение памяти.</p>
+            
+            <!-- КОНТЕЙНЕР ДЛЯ КАРТОЧЕК УЧАСТНИКОВ -->
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem;">
+                                
+                
+                 <div class="member-card" style="flex: 1; min-width: 250px; background: #fffaf4; border-radius: 24px; padding: 1.2rem 1.5rem; border: 1px solid #eedbcb;">
+                    <div style="font-size: 2rem; margin-bottom: 0.25rem;"></div>
+                    <div style="font-weight: 800; font-size: 1.2rem; color: #a84f2c; margin-bottom: 0.3rem;">Елена Крутина</div>
+                                        <div style="color: #4a3729; font-size: 0.95rem;">
+                        <strong>Роль в проекте:</strong> Куратор проекта.
+                    </div>
+                </div>
+
+		 <div class="member-card" style="flex: 1; min-width: 250px; background: #fffaf4; border-radius: 24px; padding: 1.2rem 1.5rem; border: 1px solid #eedbcb;">
+                    <div style="font-size: 2rem; margin-bottom: 0.25rem;"></div>
+                    <div style="font-weight: 800; font-size: 1.2rem; color: #a84f2c; margin-bottom: 0.3rem;">Людмила Муждабаева</div>
+                                        <div style="color: #4a3729; font-size: 0.95rem;">
+                        <strong>Роль в проекте:</strong> Коммуникация с музеями, работа с историческими источниками.
+                    </div>
+                </div>
+
+		 <div class="member-card" style="flex: 1; min-width: 250px; background: #fffaf4; border-radius: 24px; padding: 1.2rem 1.5rem; border: 1px solid #eedbcb;">
+                    <div style="font-size: 2rem; margin-bottom: 0.25rem;"></div>
+                    <div style="font-weight: 800; font-size: 1.2rem; color: #a84f2c; margin-bottom: 0.3rem;">Алексей Демьянов</div>
+                                        <div style="color: #4a3729; font-size: 0.95rem;">
+                        <strong>Роль в проекте:</strong> Работа в музеях, участие в конференциях, оформление стендов для выставок.
+                    </div>
+                </div>
+		
+		 <div class="member-card" style="flex: 1; min-width: 250px; background: #fffaf4; border-radius: 24px; padding: 1.2rem 1.5rem; border: 1px solid #eedbcb;">
+                    <div style="font-size: 2rem; margin-bottom: 0.25rem;"></div>
+                    <div style="font-weight: 800; font-size: 1.2rem; color: #a84f2c; margin-bottom: 0.3rem;">Глеб Курмачев</div>
+                                        <div style="color: #4a3729; font-size: 0.95rem;">
+                        <strong>Роль в проекте:</strong> Работа в музеях, участие в конференциях, дизайн.
+                    </div>
+                </div>
+
+		<div class="member-card" style="flex: 1; min-width: 250px; background: #fffaf4; border-radius: 24px; padding: 1.2rem 1.5rem; border: 1px solid #eedbcb;">
+                    <div style="font-size: 2rem; margin-bottom: 0.25rem;"></div>
+                    <div style="font-weight: 800; font-size: 1.2rem; color: #a84f2c; margin-bottom: 0.3rem;">Александр Зуев</div>
+                                        <div style="color: #4a3729; font-size: 0.95rem;">
+                        <strong>Роль в проекте:</strong> Работа с сайтами.
+                    </div>
+                </div>
+
+		<div class="member-card" style="flex: 1; min-width: 250px; background: #fffaf4; border-radius: 24px; padding: 1.2rem 1.5rem; border: 1px solid #eedbcb;">
+                    <div style="font-size: 2rem; margin-bottom: 0.25rem;"></div>
+                    <div style="font-weight: 800; font-size: 1.2rem; color: #a84f2c; margin-bottom: 0.3rem;">Мбири Джимми Джейкоб</div>
+                                        <div style="color: #4a3729; font-size: 0.95rem;">
+                        <strong>Роль в проекте:</strong> Работа в музеях, видеомонтаж, видеосъёмка.
+                    </div>
+                </div>
+
+
+		<div class="member-card" style="flex: 1; min-width: 250px; background: #fffaf4; border-radius: 24px; padding: 1.2rem 1.5rem; border: 1px solid #eedbcb;">
+                    <div style="font-size: 2rem; margin-bottom: 0.25rem;"></div>
+                    <div style="font-weight: 800; font-size: 1.2rem; color: #a84f2c; margin-bottom: 0.3rem;">Буян-Доржу Сарылгар</div>
+                                        <div style="color: #4a3729; font-size: 0.95rem;">
+                        <strong>Роль в проекте:</strong> Работа с сайтами, участие в конференциях, работа в школах.
+                    </div>
+                </div>
+
+		<div class="member-card" style="flex: 1; min-width: 250px; background: #fffaf4; border-radius: 24px; padding: 1.2rem 1.5rem; border: 1px solid #eedbcb;">
+                    <div style="font-size: 2rem; margin-bottom: 0.25rem;"></div>
+                    <div style="font-weight: 800; font-size: 1.2rem; color: #a84f2c; margin-bottom: 0.3rem;">Егор Тыртов</div>
+                                        <div style="color: #4a3729; font-size: 0.95rem;">
+                        <strong>Роль в проекте:</strong> Работа с сайтами, участие в конференциях, работа в школах.
+                    </div>
+                </div>
+
+		<div class="member-card" style="flex: 1; min-width: 250px; background: #fffaf4; border-radius: 24px; padding: 1.2rem 1.5rem; border: 1px solid #eedbcb;">
+                    <div style="font-size: 2rem; margin-bottom: 0.25rem;"></div>
+                    <div style="font-weight: 800; font-size: 1.2rem; color: #a84f2c; margin-bottom: 0.3rem;">Арина Коробейникова</div>
+                                        <div style="color: #4a3729; font-size: 0.95rem;">
+                        <strong>Роль в проекте:</strong> Создание книги об ополченцах, редактура.
+                    </div>
+                </div>
+
+		<div class="member-card" style="flex: 1; min-width: 250px; background: #fffaf4; border-radius: 24px; padding: 1.2rem 1.5rem; border: 1px solid #eedbcb;">
+                    <div style="font-size: 2rem; margin-bottom: 0.25rem;"></div>
+                    <div style="font-weight: 800; font-size: 1.2rem; color: #a84f2c; margin-bottom: 0.3rem;">Полина Кокшарова</div>
+                                        <div style="color: #4a3729; font-size: 0.95rem;">
+                        <strong>Роль в проекте:</strong> Создание книги об ополченцах, редактура, разработка дизайна.
+                    </div>
+                </div>
+
+		<div class="member-card" style="flex: 1; min-width: 250px; background: #fffaf4; border-radius: 24px; padding: 1.2rem 1.5rem; border: 1px solid #eedbcb;">
+                    <div style="font-size: 2rem; margin-bottom: 0.25rem;"></div>
+                    <div style="font-weight: 800; font-size: 1.2rem; color: #a84f2c; margin-bottom: 0.3rem;">Даниил Долбышев</div>
+                                        <div style="color: #4a3729; font-size: 0.95rem;">
+                        <strong>Роль в проекте:</strong> Работа в школах, работа над книгами.
+                    </div>
+                </div>
+
+                </div>
+            </div>
+                        
+            <div class="placeholder-note" style="margin-top: 1rem;">
+                💬 <strong>Как стать участником?</strong> Напишите на почту <a href="mailto:LENAKRUTINA@MAIL.RU">LENAKRUTINA@MAIL.RU</a> или в Telegram <strong>@KRUTINAELENA</strong>. Мы всегда рады новым исследователям и рассказчикам.
+            </div>
+        </div>
+
+<script>
+    const pages = document.querySelectorAll('.page-card');
+    const navLinks = document.querySelectorAll('.nav-link');
+    function showPageFromHash() {
+        let hash = window.location.hash.substring(1) || 'home';
+        const targetPage = document.getElementById(hash);
+        if (!targetPage || !targetPage.classList.contains('page-card')) hash = 'home';
+        pages.forEach(p => p.classList.remove('active-page'));
+        document.getElementById(hash)?.classList.add('active-page');
+        navLinks.forEach(link => {
+            const linkHash = link.getAttribute('href').substring(1);
+            if (linkHash === hash) link.classList.add('active');
+            else link.classList.remove('active');
+        });
+    }
+    navLinks.forEach(link => link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const newHash = link.getAttribute('href').substring(1);
+        if (newHash) { window.location.hash = newHash; showPageFromHash(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    }));
+    window.addEventListener('hashchange', () => { showPageFromHash(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    if (!window.location.hash || window.location.hash === '#') window.location.hash = 'home';
+    else showPageFromHash();
+</script>
+</body>
+</html>
