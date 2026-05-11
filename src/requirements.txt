@@ -1,5 +1,1 @@
-import logging
-import random
-from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
-from telegram.ext import Application, CommandHandler, MessageHandler, ConversationHandler, filters, ContextTypes
-from telegram.ext import ApplicationBuilder
+python-telegram-bot==22.7
