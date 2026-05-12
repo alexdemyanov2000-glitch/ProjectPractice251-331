@@ -1,39 +1,39 @@
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #f5f3ef; font-family: 'Inter', sans-serif; color: #2c2b28; line-height: 1.5; scroll-behavior: smooth; }
-        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(140, 70, 50, 0.08) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: -2; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 2rem; }
-        .main-header { text-align: center; margin-bottom: 2rem; border-bottom: 2px solid rgba(160, 80, 60, 0.35); padding-bottom: 1rem; }
-        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 8vw, 4.2rem); font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; background: linear-gradient(135deg, #8b3c2c 0%, #c96f4a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1.2rem; }
-        .nav-menu { margin-top: 1rem; }
-        .nav-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 2rem; list-style: none; }
-        .nav-link { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5e4b3a; text-decoration: none; padding: 0.5rem 0; transition: all 0.25s ease; border-bottom: 2px solid transparent; display: inline-block; }
-        .nav-link:hover, .nav-link.active { color: #bc5a38; border-bottom-color: #bc5a38; }
-        .divider { width: 80px; height: 3px; background: #bc6f4b; margin: 1rem auto 2rem auto; border-radius: 3px; }
-        .page-content { background: rgba(255, 252, 245, 0.92); backdrop-filter: blur(2px); border-radius: 32px; padding: 2rem; margin: 2rem 0; box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.12); border: 1px solid rgba(200, 140, 100, 0.3); }
-        .project-description { font-size: 1.2rem; line-height: 1.6; text-align: center; max-width: 900px; margin: 1.5rem auto; color: #3b2e26; font-weight: 500; border-left: 3px solid #c97a54; border-right: 3px solid #c97a54; padding: 0.8rem 1.5rem; background: #fffaf3; border-radius: 24px; }
-        .we-block { background: #fff7ef; border-radius: 28px; padding: 2rem; margin: 2rem 0; text-align: center; border: 1px solid #eddccf; }
-        .we-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 800; color: #b85c38; margin-bottom: 1rem; }
-        .we-text { font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: #4a3a2e; }
-        .page-card { display: none; animation: fadeUp 0.35s ease-out; }
-        .page-card.active-page { display: block; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1.2rem; border-left: 5px solid #bc6b45; padding-left: 1.2rem; color: #3f2c1f; }
-        h3 { font-size: 1.4rem; margin: 1.5rem 0 0.8rem; color: #a45332; font-weight: 700; }
-        .museum-list, .resource-list, .participants-list { list-style: none; margin: 1.5rem 0; }
-        .museum-list li, .resource-list li, .participants-list li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; }
-        .museum-list li::before { content: "★"; color: #bc6f4b; position: absolute; left: 0; }
-        .resource-list li::before, .participants-list li::before { content: "✦"; color: #bc6f4b; position: absolute; left: 0; }
-        a { color: #bc5a38; text-decoration: none; font-weight: 500; }
-        a:hover { color: #8b3c24; text-decoration: underline; }
-        .placeholder-note { background: #fef3ea; border-radius: 20px; padding: 1.5rem; text-align: center; margin: 1rem 0; font-style: italic; color: #6a4c38; border: 1px solid #ebd4c4; }
-        .project-card-light { background: #fffaf4; border-radius: 24px; padding: 1.6rem; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #eedbcb; }
-        .project-flex { display: flex; flex-wrap: wrap; gap: 1.8rem; align-items: flex-start; }
-        .project-content { flex: 2; min-width: 220px; }
-        .project-photo { flex: 1; min-width: 180px; background: #f3ede5; border-radius: 20px; padding: 0.8rem; border: 1px solid #c9aa8b; text-align: center; }
-        .actual-image { width: 100%; border-radius: 16px; display: block; object-fit: cover; max-height: 220px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .image-caption { font-size: 0.7rem; margin-top: 8px; color: #a07a5c; text-align: center; }
-        .project-title { font-size: 1.5rem; font-weight: 800; color: #a84f2c; margin-bottom: 0.75rem; font-family: 'Playfair Display', serif; }
-        .project-desc { font-size: 1rem; margin: 0.5rem 0; font-weight: 500; color: #4a3729; }
-        .italic-note { font-style: italic; color: #b26947; margin-top: 0.3rem; }
-        .year-list-note { font-family: monospace; font-size: 0.75rem; background: #f7ede2; padding: 0.3rem 0.6rem; border-radius: 30px; display: inline-block; margin-top: 8px; color: #74583e; }
-        @media (max-width: 750px) { .project-flex { flex-direction: column; } .container { padding: 1rem; } .nav-list { gap: 0.8rem 1.2rem; } .nav-link { font-size: 0.8rem; } h2 { font-size: 1.6rem; } }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #f5f3ef; font-family: 'Inter', sans-serif; color: #2c2b28; line-height: 1.5; scroll-behavior: smooth; }
+body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(140, 70, 50, 0.08) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: -2; }
+.container { max-width: 1280px; margin: 0 auto; padding: 2rem; }
+.main-header { text-align: center; margin-bottom: 2rem; border-bottom: 2px solid rgba(160, 80, 60, 0.35); padding-bottom: 1rem; }
+.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 8vw, 4.2rem); font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; background: linear-gradient(135deg, #8b3c2c 0%, #c96f4a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1.2rem; }
+.nav-menu { margin-top: 1rem; }
+.nav-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 2rem; list-style: none; }
+.nav-link { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5e4b3a; text-decoration: none; padding: 0.5rem 0; transition: all 0.25s ease; border-bottom: 2px solid transparent; display: inline-block; }
+.nav-link:hover, .nav-link.active { color: #bc5a38; border-bottom-color: #bc5a38; }
+.divider { width: 80px; height: 3px; background: #bc6f4b; margin: 1rem auto 2rem auto; border-radius: 3px; }
+.page-content { background: rgba(255, 252, 245, 0.92); backdrop-filter: blur(2px); border-radius: 32px; padding: 2rem; margin: 2rem 0; box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.12); border: 1px solid rgba(200, 140, 100, 0.3); }
+.project-description { font-size: 1.2rem; line-height: 1.6; text-align: center; max-width: 900px; margin: 1.5rem auto; color: #3b2e26; font-weight: 500; border-left: 3px solid #c97a54; border-right: 3px solid #c97a54; padding: 0.8rem 1.5rem; background: #fffaf3; border-radius: 24px; }
+.we-block { background: #fff7ef; border-radius: 28px; padding: 2rem; margin: 2rem 0; text-align: center; border: 1px solid #eddccf; }
+.we-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 800; color: #b85c38; margin-bottom: 1rem; }
+.we-text { font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: #4a3a2e; }
+.page-card { display: none; animation: fadeUp 0.35s ease-out; }
+.page-card.active-page { display: block; }
+ @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1.2rem; border-left: 5px solid #bc6b45; padding-left: 1.2rem; color: #3f2c1f; }
+h3 { font-size: 1.4rem; margin: 1.5rem 0 0.8rem; color: #a45332; font-weight: 700; }
+.museum-list, .resource-list, .participants-list { list-style: none; margin: 1.5rem 0; }
+.museum-list li, .resource-list li, .participants-list li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; }
+.museum-list li::before { content: "★"; color: #bc6f4b; position: absolute; left: 0; }
+.resource-list li::before, .participants-list li::before { content: "✦"; color: #bc6f4b; position: absolute; left: 0; }
+a { color: #bc5a38; text-decoration: none; font-weight: 500; }
+a:hover { color: #8b3c24; text-decoration: underline; }
+.placeholder-note { background: #fef3ea; border-radius: 20px; padding: 1.5rem; text-align: center; margin: 1rem 0; font-style: italic; color: #6a4c38; border: 1px solid #ebd4c4; }
+.project-card-light { background: #fffaf4; border-radius: 24px; padding: 1.6rem; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #eedbcb; }
+.project-flex { display: flex; flex-wrap: wrap; gap: 1.8rem; align-items: flex-start; }
+.project-content { flex: 2; min-width: 220px; }
+.project-photo { flex: 1; min-width: 180px; background: #f3ede5; border-radius: 20px; padding: 0.8rem; border: 1px solid #c9aa8b; text-align: center; }
+.actual-image { width: 100%; border-radius: 16px; display: block; object-fit: cover; max-height: 220px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.image-caption { font-size: 0.7rem; margin-top: 8px; color: #a07a5c; text-align: center; }
+.project-title { font-size: 1.5rem; font-weight: 800; color: #a84f2c; margin-bottom: 0.75rem; font-family: 'Playfair Display', serif; }
+.project-desc { font-size: 1rem; margin: 0.5rem 0; font-weight: 500; color: #4a3729; }
+.italic-note { font-style: italic; color: #b26947; margin-top: 0.3rem; }
+.year-list-note { font-family: monospace; font-size: 0.75rem; background: #f7ede2; padding: 0.3rem 0.6rem; border-radius: 30px; display: inline-block; margin-top: 8px; color: #74583e; }
+ @media (max-width: 750px) { .project-flex { flex-direction: column; } .container { padding: 1rem; } .nav-list { gap: 0.8rem 1.2rem; } .nav-link { font-size: 0.8rem; } h2 { font-size: 1.6rem; } }
